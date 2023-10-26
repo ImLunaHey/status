@@ -97,27 +97,28 @@ Bun.serve({
   async fetch(request, server) {
     const appStatuses = await getStatus();
     return new Response(
-      renderToStaticMarkup(
-        <App>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4">
-            {urls.map((url) => {
-              const appStatus = appStatuses?.[url];
-              const statusColor = appStatus?.status === 'pass' ? 'bg-green-500' : 'bg-red-500';
-              return (
-                <a
-                  href={url}
-                  className={`flex flex-col space p-4 h-24 rounded-md shadow-md ${statusColor} justify-between block`}
-                >
-                  <div className="text-white font-bold truncate">{url.split('://')[1].split('/')[0]}</div>
-                  <div className="text-white text-xs" title={appStatus?.time ?? 'unknown'}>
-                    {appStatus?.time ? new Date(appStatus.time).toLocaleString() : 'unknown'}
-                  </div>
-                </a>
-              );
-            })}
-          </div>
-        </App>,
-      ),
+      '<!doctype html>' +
+        renderToStaticMarkup(
+          <App>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4">
+              {urls.map((url) => {
+                const appStatus = appStatuses?.[url];
+                const statusColor = appStatus?.status === 'pass' ? 'bg-green-500' : 'bg-red-500';
+                return (
+                  <a
+                    href={url}
+                    className={`flex flex-col space p-4 h-24 rounded-md shadow-md ${statusColor} justify-between block`}
+                  >
+                    <div className="text-white font-bold truncate">{url.split('://')[1].split('/')[0]}</div>
+                    <div className="text-white text-xs" title={appStatus?.time ?? 'unknown'}>
+                      {appStatus?.time ? new Date(appStatus.time).toLocaleString() : 'unknown'}
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </App>,
+        ),
       {
         headers: {
           'Content-Type': 'text/html charset=utf-8',
