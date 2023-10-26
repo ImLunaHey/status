@@ -108,7 +108,7 @@ const releaseId = await import(`${process.cwd()}/package.json`)
 
 Bun.serve({
   port: process.env.PORT ?? 3000,
-  async fetch(request, server) {
+  async fetch(request) {
     const url = new URL(request.url);
     if (url.pathname === '/.well-known/health') {
       const fields = {

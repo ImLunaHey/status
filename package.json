@@ -2,6 +2,7 @@
   "name": "status",
   "module": "src/index.tsx",
   "type": "module",
+  "version": "0.0.1",
   "scripts": {
     "dev": "bun --watch run ./src/index.tsx",
     "start": "bun --revision && bun run ./src/index.tsx"
