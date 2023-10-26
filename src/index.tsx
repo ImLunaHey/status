@@ -22,11 +22,9 @@ const urls = [
 ];
 
 const check = async (url: string) => {
-  //   const response = await fetch(`${url}/.well-known/health`);
-  //   const json = (await response.json()) as { status: string };
-  //   return json.status === 'pass' && response.status === 200;
-  const response = await fetch(url);
-  return response.status === 200;
+  const response = await fetch(`${url}/.well-known/health`);
+  const json = (await response.json()) as { status: string };
+  return json.status === 'pass' && response.status === 200;
 };
 
 const run = async () => {
