@@ -1,0 +1,22 @@
+{
+  "name": "status",
+  "module": "src/index.tsx",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch run ./src/index.tsx",
+    "start": "bun --revision && bun run ./src/index.tsx"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.33",
+    "@types/react-dom": "^18.2.14",
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@axiomhq/js": "^1.0.0-rc.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
