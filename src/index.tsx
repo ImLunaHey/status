@@ -28,22 +28,28 @@ const check = async (url: string) => {
 };
 
 const run = async () => {
-  try {
-    for (const url of urls) {
+  for (const url of urls) {
+    try {
       const status = await check(url);
       axiom.ingest(process.env.AXIOM_DATASET!, {
         event: {
           status: status ? 'pass' : 'fail',
-          url: url,
+          url,
         },
       });
       console.info(`[${status ? 'PASS' : 'FAIL'}] ${url}`);
+    } catch (error) {
+      axiom.ingest(process.env.AXIOM_DATASET!, {
+        event: {
+          status: 'fail',
+          url,
+        },
+      });
+      console.info(`[FAIL] ${url}`);
     }
-
-    await axiom.flush();
-  } catch (error) {
-    console.error(error);
   }
+
+  await axiom.flush();
 };
 
 // Run once on startup
