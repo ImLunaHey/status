@@ -105,6 +105,7 @@ Bun.serve({
                 return (
                   <a
                     href={url}
+                    key={url}
                     className={`flex flex-col space p-4 h-24 rounded-md shadow-md ${statusColor} justify-between block`}
                   >
                     <div className="text-white font-bold truncate">{url.split('://')[1].split('/')[0]}</div>
