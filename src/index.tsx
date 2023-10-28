@@ -10,6 +10,7 @@ const axiom = new Axiom({
 const urls = [
   'https://fish.lgbt',
   'https://blog.fish.lgbt',
+  'https://clicker.fish.lgbt',
   'https://status.fish.lgbt',
   'https://minify.fish.lgbt',
   'https://multiplayer.fish.lgbt',
